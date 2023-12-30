@@ -23,7 +23,7 @@ INSERT INTO patrons (name, phoneNumber) VALUES
 ('Lawrence Mulvaney', '7572399027');
 
 INSERT INTO books (patronID, title, author, genre) VALUES 
- (1,'The Silent Echo', 'Alexandra Quinn', 'Alexandra Quinn'),
+ (1,'The Silent Echo', 'Alexandra Quinn', 'Horror'),
  (2,'Whispers of the Moon', 'Gabriel Nightshade', 'Fantasy'),
  (3,'Lost in Time', 'Isabella Tempus', 'Science Fiction'),
  (4,'Shadowed Secrets', 'Xavier Enigma', 'Thriller'),

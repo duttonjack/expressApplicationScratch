@@ -1,4 +1,3 @@
-
 const $bookList = $('#bookList');
 
 fetch("/api/books")

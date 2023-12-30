@@ -1,10 +1,13 @@
-import express from "express"
+import express from "express";
 import pg from 'pg';
+import multer from 'multer';
+
+
 
 const { Pool } = pg
 
 const app = express()
-const expressPort = 8001;
+const expressPort = 8000;
 
 const pool = new Pool ({
     user: 'duttonjack',
@@ -13,7 +16,12 @@ const pool = new Pool ({
     port: 5432
 })
 
+const upload = multer();
+app.use(upload.none());
+
+
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
 app.get('/api/books', (req, res) => {
@@ -22,6 +30,11 @@ app.get('/api/books', (req, res) => {
         .catch((error) => {
             res.status(500).send("Error")
         })
+})
+
+app.post('/api/patrons', (req, res) => {
+    console.log("req", req.body)
+    res.status(200).send(req.body)
 })
 
 

@@ -6,10 +6,42 @@
     <title>Express from Scratch</title>
     <script defer src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
 
 </head>
 <body>
     <p>Book list</p>
     <div id="bookList"></div>
+    <div id="patronFormDiv">
+        <form id="patronForm" method="post" action="/api/patrons">
+            <label>
+              Name:
+              <input name="submitted-name" autocomplete="name" />
+            </label>
+            <label>
+              Phone Number:
+              <input name="submitted-phone" autocomplete="phonenumber" />
+            </label>
+            <button>Submit</button>
+          </form>
+          <script>
+          document.getElementById('patronForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+
+            fetch('/api/patrons', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => console.error(error))
+          });
+          </script>
+
+    </div>
 </body>
 </html>
